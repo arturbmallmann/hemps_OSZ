@@ -186,7 +186,7 @@ def get_static_mapping_list(yaml_reader):
                     static_task_list.append([task_rel_id, task_static_map])
                     
                 else:
-                    print "[WARNING]: Static task name ["+static_task+"] does not belong to application [" + app_name+ "], it will be ignored in static mapping\n"
+                    print ("[WARNING]: Static task name ["+static_task+"] does not belong to application [" + app_name+ "], it will be ignored in static mapping\n")
         except:
             pass # This means that the application not has any task mapped statically
         

@@ -5,14 +5,14 @@ if len(argv) == 6:
 	MAX_X=int(MAX_X)
 	MAX_Y=int(MAX_Y)
 	MAX_CLUSTER_X=int(MAX_CLUSTER_X)
-	MAX_CLUSTER_Y=int(MAX_CLUSTER_Y)	
+	MAX_CLUSTER_Y=int(MAX_CLUSTER_Y)
 	master_pe=int(master_posX, posY)
 elif len(argv) == 5:
 	scriptname,MAX_X,MAX_Y,MAX_CLUSTER_X,MAX_CLUSTER_Y = argv
 	MAX_X=int(MAX_X)
 	MAX_Y=int(MAX_Y)
 	MAX_CLUSTER_X=int(MAX_CLUSTER_X)
-	MAX_CLUSTER_Y=int(MAX_CLUSTER_Y)	
+	MAX_CLUSTER_Y=int(MAX_CLUSTER_Y)
 	master_pe=0
 elif len(argv) == 4:
 	scriptname,MAX_X,MAX_Y,master_pe = argv
@@ -52,7 +52,7 @@ print "MAX_Y = %d" % (MAX_Y)
 print "MAX_CLUSTER_X = %d" % (MAX_CLUSTER_X)
 print "MAX_CLUSTER_Y = %d" % (MAX_CLUSTER_Y)
 
-for pe in xrange(0,max_pe):						
+for pe in xrange(0,max_pe):
 	if MAX_CLUSTER_X == 0:
 		if master_pe==pe:
 			pe_type_str="local"
@@ -61,7 +61,7 @@ for pe in xrange(0,max_pe):
 	elif(MAX_CLUSTER_X != MAX_CLUSTER_Y or MAX_X != MAX_Y):
 		if pe == master_pe:
 			pe_type_str="local"
-		elif(((posX == MAX_CLUSTER_X) or (posX == 0)) and ((posY == MAX_X*MAX_CLUSTER_Y) or (posY+MAX_CLUSTER_X==MAX_CLUSTER_Y*MAX_X))):	
+		elif(((posX == MAX_CLUSTER_X) or (posX == 0)) and ((posY == MAX_X*MAX_CLUSTER_Y) or (posY+MAX_CLUSTER_X==MAX_CLUSTER_Y*MAX_X))):
 			pe_type_str="local"
 		elif ((posX == MAX_CLUSTER_X or posX == 0) and (posY == 0)):
 			pe_type_str="local"
@@ -74,12 +74,12 @@ for pe in xrange(0,max_pe):
 			pe_type_str="slave"
 
 	# print "PE %dx%d" % (posX,posY)
-	
+
 	print "add wave -noupdate -group {%s %dx%d - %d} /test_bench/HeMPS/%s%dx%d/clock" % (pe_type_str, posX, posY, pe, pe_type_str, posX, posY)
 
 	#pe signals
-	print "add wave -noupdate -group {%s %dx%d - %d} -group pe /test_bench/HeMPS/%s%dx%d/int_seek" % 		(pe_type_str, posX, posY, pe, pe_type_str, posX, posY)
 	print "add wave -noupdate -group {%s %dx%d - %d} -group pe /test_bench/HeMPS/%s%dx%d/irq" % 			(pe_type_str, posX, posY, pe, pe_type_str, posX, posY)
+	print "add wave -noupdate -group {%s %dx%d - %d} -group pe /test_bench/HeMPS/%s%dx%d/int_seek" % 		(pe_type_str, posX, posY, pe, pe_type_str, posX, posY)
 	print "add wave -noupdate -group {%s %dx%d - %d} -group pe /test_bench/HeMPS/%s%dx%d/irq_mask_reg" % 	(pe_type_str, posX, posY, pe, pe_type_str, posX, posY)
 	print "add wave -noupdate -group {%s %dx%d - %d} -group pe /test_bench/HeMPS/%s%dx%d/irq_status" % 		(pe_type_str, posX, posY, pe, pe_type_str, posX, posY)
 	print "add wave -noupdate -group {%s %dx%d - %d} -group pe /test_bench/HeMPS/%s%dx%d/cpu/mem_address" % (pe_type_str, posX, posY, pe, pe_type_str, posX, posY)
@@ -326,14 +326,14 @@ for pe in xrange(0,max_pe):
 				print "add wave -noupdate -group {%s %dx%d - %d} -group ports -group {router %dx%d output %s} -radix hexadecimal /test_bench/HeMPS/%s%dx%d/RouterCCwrapped/tx(%d)" % 		(pe_type_str, posX, posY, pe, posX, posY, portname[port], pe_type_str, posX, posY, port)
 				print "add wave -noupdate -group {%s %dx%d - %d} -group ports -group {router %dx%d output %s} -radix hexadecimal /test_bench/HeMPS/%s%dx%d/RouterCCwrapped/data_out(%d)" % 	(pe_type_str, posX, posY, pe, posX, posY, portname[port], pe_type_str, posX, posY, port)
 				print "add wave -noupdate -group {%s %dx%d - %d} -group ports -group {router %dx%d output %s} -radix hexadecimal /test_bench/HeMPS/%s%dx%d/RouterCCwrapped/eop_out(%d)" % 	(pe_type_str, posX, posY, pe, posX, posY, portname[port], pe_type_str, posX, posY, port)
-	
+
 
 	if pe%MAX_X==MAX_X-1:
 		posX=0
 		posY=posY+1
 	else:
-		posX=posX+1	
-					
+		posX=posX+1
+
 #INJECTOR SIGNALS
 print "add wave -noupdate -group INJECTOR /test_bench/INJECTOR/clock"
 print "add wave -noupdate -group INJECTOR /test_bench/INJECTOR/reset"
@@ -422,7 +422,7 @@ print "add wave -noupdate -group IO_PERIPHERAL /test_bench/IO_PERIPHERAL/credit_
 print "add wave -noupdate -group IO_PERIPHERAL /test_bench/IO_PERIPHERAL/eop_out_primary"
 print "add wave -noupdate -group IO_PERIPHERAL /test_bench/IO_PERIPHERAL/EA_in"
 print "add wave -noupdate -group IO_PERIPHERAL /test_bench/IO_PERIPHERAL/EA_out"
-	
+
 
 
 print "TreeUpdate [SetDefaultTree]\n\
