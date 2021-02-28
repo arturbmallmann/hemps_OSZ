@@ -40,8 +40,8 @@ def create_cluster_list(x_mpsoc_dim, y_mpsoc_dim, x_cluster_dim, y_cluster_dim, 
     if  ( x_mpsoc_dim % x_cluster_dim ) != 0 or (y_mpsoc_dim % y_cluster_dim ) != 0:
         sys.exit('Error in YAML noc_dimension OR cluster_dimension - you must provide a compatible dimension')
 
-    x_clusters_number = x_mpsoc_dim / x_cluster_dim;
-    y_clusters_number = y_mpsoc_dim / y_cluster_dim;
+    x_clusters_number = int(x_mpsoc_dim / x_cluster_dim);
+    y_clusters_number = int(y_mpsoc_dim / y_cluster_dim);
 
     cluster_list = []
 
