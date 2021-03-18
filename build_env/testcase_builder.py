@@ -330,10 +330,6 @@ def append_peripherals_at_end_api_h(testcase_path, testcase_yaml_file):
     print(f"Testcase path: {testcase_path}, dir: {subprocess.getoutput('pwd')}",file=sys.stderr)
     f = open(include_dir, "r+")
 
-    print("antes".center(100,'#'))
-    for a in f:
-        print(a)
-    print("antes".center(100,'#'))
 
     # f.seek(-25, 2) python3 não permite seek negativo em arquivos de texto, somente binários, por exemplo: open(...,'rb')
     f.seek(0,2)
@@ -347,12 +343,7 @@ def append_peripherals_at_end_api_h(testcase_path, testcase_yaml_file):
 
     f.writelines(file_lines)
 
-    f.seek(0)
-    print("depois".center(100,'#'))
-    for a in f:
-        print(a)
     f.close()
-    print("depois".center(100,'#'))
 
 #Call of function main, this aproaches enables to call a fucntion before it declaration
 main()

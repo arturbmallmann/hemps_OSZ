@@ -2,3 +2,4 @@
 testcases/*
 *__pycache__
 !testcases/examples
+testcases/examples/*.log

@@ -3,8 +3,7 @@ hw:
   tasks_per_PE: 1    
   repository_size_MB:  1
   physical_channels: 2
-  #model_description: hybrid    # sc (gcc) | scmod (questa) | vhdl | hybrid (top module sc, internal vhdl)
-  model_description: sc    # sc (gcc) | scmod (questa) | vhdl | hybrid (top module sc, internal vhdl)
+  model_description: hybrid    # sc (gcc) | scmod (questa) | vhdl | hybrid (top module sc, internal vhdl)
   noc_buffer_size: 8       # must be power of 2
   mpsoc_dimension: [3,3]     # for while, must be a square shape
   cluster_dimension: [3,3] # for while, must be a square shape
@@ -18,4 +17,10 @@ apps:
     static_mapping:
       cons: [1,1]
       prod: [2,2]
+  - name: prod_cons
+    start_time_ms: 2 #any unsigned integer number
+    secure: yes
+    static_mapping:
+      cons: [0,1]
+      prod: [0,2]
 
